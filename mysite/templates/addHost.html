@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block title %}
+    Add Host
+{% endblock %}
+{% block content %}
+<h2>Add Details of the Host</h2>
+<div class="container">
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</div>
+{% endblock %}

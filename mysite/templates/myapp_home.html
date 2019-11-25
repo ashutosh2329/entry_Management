@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Entry Management</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-<div id="tudo">
-  
-	<h1>Entry Management tool home</h1>
+{% extends 'base.html'%}
+{% block title %}
+    Entry management
+{% endblock %}
 
- <p>Some simple buttons. When I have more time, I'll post more buttons</p>
- <p>Alguns botões simples. Quando eu tiver mais tempo, vou postar mais botões</p>
- <h2>Hostnames</h2>
- 	{% for host in hosts %}
-	 	{{ host.name }} <br>
- 	{% endfor %}
-    
-	<div>
-		<a href="#" class="btn btn-outline-secondary"> Add Host</a>
-	</div>
-  	<div>
-		<a href="#" class="btn btn-outline-secondary">Register Visiter</a>
-	</div>
+{% block content%}
+	<h1>Entry management</h1>
+{% endblock %}
   
-</div>
-  
-</body>
-</html>
