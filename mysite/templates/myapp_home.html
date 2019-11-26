@@ -4,8 +4,13 @@
 {% endblock %}
 
 {% block content%}
+<div class="jumbotron text-center">
     <h1>Entry management</h1>
-    
+    {% if not flag %}
+    <h3>Currently, No Visiters</h3>
+    {% endif %}
+</div>  
+<div class="text-left">
     <form method="POST" class="post-form">
             {% csrf_token %}
     <table>
@@ -26,11 +31,9 @@
     {% if flag %}
     <button class="btn btn-danger"> checkout</button>
     {% endif %}
-    {% if not flag %}
-    <h3>Currently, No Visiters</h3>
-    {% endif %}
 </form>
 {% if msg %}
     {{ msg }}
 {% endif %}
+</div>
 {% endblock %}

@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 <h2>Add Details of the Host</h2>
-<div class="container">
+<div class="jumbotron text-center">
 
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}

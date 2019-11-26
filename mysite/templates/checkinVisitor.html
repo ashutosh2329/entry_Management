@@ -4,6 +4,7 @@
 {% endblock %}
 {% block content %}
 <h2>Add Details of the visitor</h2>
+<div class="jumbotron text-center">
 <div class="container">
 
     <form method="POST" class="post-form">{% csrf_token %}
@@ -14,6 +15,7 @@
 {% if error %}
 <div class="alert alert-danger" role="alert">
         {{ error }}
+</div>
 </div>
 </div>
 {% endif %}
