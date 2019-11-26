@@ -19,6 +19,7 @@ def email(request,subject,message,recipient):
 class HomeView(TemplateView):
 
     def get(self, request):
+        print("get herer")
         current_visitor = Visitor.objects.all().filter(present=True)
         if len(current_visitor)>0:
             flag = True
@@ -31,9 +32,8 @@ class HomeView(TemplateView):
         return render(request,"myapp_home.html",context)
 
     def post(self, request):
+        print("post here")
         VisitorsChekingout = request.POST.getlist('checks')
-        # if len(VisitorsChekingout)<= 0:
-        #     return redirect(self.get(msg="check the box for checking out"))
         for vi_id in VisitorsChekingout:
             Visitor_object = Visitor.objects.all().filter(id=vi_id)[0]
             Visitor.checkout(Visitor_object)
