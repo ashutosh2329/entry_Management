@@ -4,6 +4,17 @@
 {% endblock %}
 
 {% block content%}
-	<h1>Entry management</h1>
+    <h1>Entry management</h1>
+    <table>
+        <ul>
+            {% for visiter in visiters %}
+            <li>{{ visiter.name }} visiting {{ visiter.visiting_host.name}},
+                checkin time {{ visiter.checkin_time }}
+                <button class="btn btn-danger"> checkout</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </table>
+    {{ msg }}
 {% endblock %}
   

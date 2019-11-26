@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Host
+from .models import Host, Visitor
 from datetime import datetime
 
 from django.views.generic import TemplateView
@@ -11,22 +11,13 @@ from .forms import VisitorForm, HostForm
 
 def index(request):
     hosts = Host.objects.all()
+    current_visitor = Visitor.objects.all().filter(present=True)
     context = {
-        'hosts':hosts
+        'hosts':hosts,
+        'visiters':current_visitor
     }
     return render(request,"myapp_home.html",context)
 
-def checkoutVisitor(request):
-    #print("test")
-    return render(request,'checkoutVisitor.html')
-
-
-# def addHost(request):
-#     form = HostForm()
-#     context = {
-#         'form':form
-#     }
-#     return render(request,'addHost.html',context)
 
 class HostView(TemplateView):
     template_name = 'myapp_home.html'
@@ -44,13 +35,6 @@ class HostView(TemplateView):
             form.save()
         
         return render(request,'myapp_home.html')
-
-# def checkinVisitor(request):
-#     form = VisitorForm()
-#     context = {
-#         'form':form
-#     }
-#     return render(request,'checkinVisitor.html',context)
 
 class CheckinView(TemplateView):
     template_name = 'myapp_home.html'
