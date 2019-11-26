@@ -30,6 +30,7 @@ class Visitor(models.Model):
     def checkout(self):
         self.checkout_time = datetime.now()
         self.present = False
+        print("We are here")
         self.save();
     
     def __str__(self):

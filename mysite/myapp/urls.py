@@ -1,10 +1,8 @@
 from django.urls import path
-
-from . import views
-from .views import HostView, CheckinView
+from .views import HostView, CheckinView, HomeView
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', HomeView.as_view(), name='index'),
     path('addHost',HostView.as_view(),name='adding host'),
     path('checkinVisitor',CheckinView.as_view(),name='checkin visitor'),
 ]

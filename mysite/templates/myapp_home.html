@@ -5,16 +5,32 @@
 
 {% block content%}
     <h1>Entry management</h1>
+    
+    <form method="POST" class="post-form">
+            {% csrf_token %}
     <table>
         <ul>
             {% for visiter in visiters %}
-            <li>{{ visiter.name }} visiting {{ visiter.visiting_host.name}},
-                checkin time {{ visiter.checkin_time }}
-                <button class="btn btn-danger"> checkout</button>
-            </li>
+            <div class="form-check">
+                <input name="checks" class="form-check-input" type="checkbox" value='{{ visiter.id }}' id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                        <li>
+                            {{ visiter.name }} visiting {{ visiter.visiting_host.name}},
+                                checkin time {{ visiter.checkin_time }}
+                        </li>
+                </label>
+            </div>
             {% endfor %}
         </ul>
     </table>
+    {% if flag %}
+    <button class="btn btn-danger"> checkout</button>
+    {% endif %}
+    {% if not flag %}
+    <h3>Currently, No Visiters</h3>
+    {% endif %}
+</form>
+{% if msg %}
     {{ msg }}
+{% endif %}
 {% endblock %}
-  
